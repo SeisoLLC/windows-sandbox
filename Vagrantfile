@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
     vb.customize ['modifyvm', :id, '--clipboard-mode', 'bidirectional']
   end
 
+  # Used to set the Vagrant machine name
   config.vm.define NAME do |t|
   end
 end
