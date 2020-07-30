@@ -13,3 +13,5 @@ This is my personal Windows sandbox vagrant machine
 ./start --enable-gui
 ```
 
+### WSLv2 w/Ubuntu
+After starting windows-sandbox, run `wsl.ps1` in the guest.
