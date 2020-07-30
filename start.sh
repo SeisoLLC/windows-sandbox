@@ -37,6 +37,31 @@ function _feedback() {
     esac
 }
 
+function help() {
+  # Purposefully using tabs for the HEREDOC
+  cat <<- HEREDOC
+	Preferred Usage: ./${0##*/} [--enable-gui]
+
+	--enable-gui     Enable the GUI
+	-h|--help        Usage details
+	HEREDOC
+
+  exit 0
+}
+
+OPTSPEC=":h-:"
+while getopts "${OPTSPEC}" optchar; do
+  case "${optchar}" in
+    -)
+      case "${OPTARG}" in
+        help)
+          help ;;
+      esac ;;
+    h)
+      help ;;
+  esac
+done
+
 if [[ "${1:-}" == "--enable-gui" ]]; then
     _feedback INFO "Enabling the gui due to --enable-gui"
     bGUI=1
