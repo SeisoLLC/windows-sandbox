@@ -2,6 +2,10 @@
 # vi: set ft=ruby :
 NAME = "windows-sandbox"
 
+def gui_bool?
+  !ENV.fetch('GUI', '').empty?
+end
+
 Vagrant.configure("2") do |config|
   config.vm.box = "gusztavvargadr/windows-10"
   config.vm.hostname = NAME
@@ -15,6 +19,7 @@ Vagrant.configure("2") do |config|
     vb.cpus = 2
 
     vb.customize ['modifyvm', :id, '--clipboard-mode', 'bidirectional']
+    vb.gui = gui_bool?
   end
 
   # Used to set the Vagrant machine name

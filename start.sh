@@ -37,7 +37,13 @@ function _feedback() {
     esac
 }
 
-vagrant up --provider virtualbox "$@"
+if [[ "${1:-}" == "--enable-gui" ]]; then
+    _feedback INFO "Enabling the gui due to --enable-gui"
+    bGUI=1
+    shift
+fi
+
+GUI="${bGUI:-}" vagrant up --provider virtualbox "$@"
 vagrant ssh || if [[ $? == "255" ]]; then echo "Caught exit code 255"; else echo "Unhandled exception during vagrant ssh"; exit 1 ; fi
 while [ -z "${prompt}" ]; do
     read -rp "Do you want to destroy the VM (Y/n)? " prompt
