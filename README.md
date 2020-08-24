@@ -14,4 +14,4 @@ This is my personal Windows sandbox vagrant machine
 ```
 
 ### WSLv2 w/Ubuntu
-After starting windows-sandbox, run `wsl.ps1` in the guest.
+After starting windows-sandbox, run `wslv2.ps1` in the guest.
