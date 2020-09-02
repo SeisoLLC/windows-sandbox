@@ -10,7 +10,7 @@ This is my personal Windows sandbox vagrant machine
 
 ### GUI
 ```bash
-./start --enable-gui
+./start.sh --enable-gui
 ```
 
 ### WSLv2 w/Ubuntu
