@@ -68,6 +68,7 @@ if [[ "${1:-}" == "--enable-gui" ]]; then
     shift
 fi
 
+vagrant box update --box "gusztavvargadr/windows-10" --provider virtualbox
 GUI="${bGUI:-}" vagrant up --provider virtualbox "$@"
 vagrant ssh || if [[ $? == "255" ]]; then echo "Caught exit code 255"; else echo "Unhandled exception during vagrant ssh"; exit 1 ; fi
 while [ -z "${prompt}" ]; do
