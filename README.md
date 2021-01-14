@@ -1,6 +1,6 @@
 # Windows sandbox
 
-This is my personal Windows sandbox vagrant machine
+An Windows sandbox for experimentation and proof of concepts.
 
 ## Quickstart
 ### Headless
