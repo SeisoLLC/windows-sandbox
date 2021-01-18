@@ -13,6 +13,7 @@ declare -r start=$(date +%s)
     declare -r DEFAULT='\033[0m'
 }
 prompt=""
+os="gusztavvargadr/windows-10"
 
 function _quit() {
     exitCode="${1:-0}"
@@ -68,7 +69,8 @@ if [[ "${1:-}" == "--enable-gui" ]]; then
     shift
 fi
 
-vagrant box update --box "gusztavvargadr/windows-10" --provider virtualbox
+vagrant box add "${os}" --provider virtualbox 2>/dev/null || true
+vagrant box update --box "${os}" --provider virtualbox
 GUI="${bGUI:-}" vagrant up --provider virtualbox "$@"
 vagrant ssh || if [[ $? == "255" ]]; then echo "Caught exit code 255"; else echo "Unhandled exception during vagrant ssh"; exit 1 ; fi
 while [ -z "${prompt}" ]; do
